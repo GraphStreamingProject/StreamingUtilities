@@ -107,5 +107,9 @@ if (BUILD_EXE)
     tools/streamifier.cpp)
   add_dependencies(streamifier StreamingUtilities)
   target_link_libraries(streamifier PRIVATE StreamingUtilities)
+add_executable(run_matrix_market_convert
+  tools/run_matrix_market_convert.cpp)
+add_dependencies(run_matrix_market_convert StreamingUtilities)
+target_link_libraries(run_matrix_market_convert PRIVATE StreamingUtilities)
 endif()
 
