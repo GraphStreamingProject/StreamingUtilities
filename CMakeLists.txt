@@ -21,7 +21,7 @@ message(STATUS "StreamingUtilities Build Type: ${CMAKE_BUILD_TYPE}")
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
   message(STATUS "Adding GNU compiler flags")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -W -Wall")
-elseif(STATUS "${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
   message("Adding MSVC compiler flags")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Wall")
 else()
@@ -107,9 +107,15 @@ if (BUILD_EXE)
     tools/streamifier.cpp)
   add_dependencies(streamifier StreamingUtilities)
   target_link_libraries(streamifier PRIVATE StreamingUtilities)
-add_executable(run_matrix_market_convert
-  tools/run_matrix_market_convert.cpp)
-add_dependencies(run_matrix_market_convert StreamingUtilities)
-target_link_libraries(run_matrix_market_convert PRIVATE StreamingUtilities)
+
+  add_executable(run_matrix_market_convert
+    tools/run_matrix_market_convert.cpp)
+  add_dependencies(run_matrix_market_convert StreamingUtilities)
+  target_link_libraries(run_matrix_market_convert PRIVATE StreamingUtilities)
+
+  add_executable(extract_dense_core
+    tools/extract_dense_core.cpp)
+  add_dependencies(extract_dense_core StreamingUtilities)
+  target_link_libraries(extract_dense_core PRIVATE StreamingUtilities)
 endif()
 
