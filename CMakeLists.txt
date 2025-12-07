@@ -117,5 +117,10 @@ if (BUILD_EXE)
     tools/extract_dense_core.cpp)
   add_dependencies(extract_dense_core StreamingUtilities)
   target_link_libraries(extract_dense_core PRIVATE StreamingUtilities)
+
+  add_executable(renumber_vertices
+    tools/renumber_vertices.cpp)
+  add_dependencies(renumber_vertices StreamingUtilities)
+  target_link_libraries(renumber_vertices PRIVATE StreamingUtilities)
 endif()
 
